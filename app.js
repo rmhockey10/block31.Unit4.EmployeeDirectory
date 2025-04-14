@@ -13,7 +13,7 @@ console.log(employees);
 
 // GET / to send the message "Hello World"
 app.route("/").get((request, response) => {
-  response.send("Hello Employees!");
+  response.send("Hello employees!");
 });
 
 // GET /employees/random randomly generated a number used as an id to select an employee
@@ -21,7 +21,7 @@ app.route("/employees/random").get((request, response) => {
   const id = Math.floor(Math.random() * employees.length);
   console.log(id);
   const found = employees.find((employee) => employee.id === id);
-  response.send(found.name);
+  response.send(found);
 });
 
 //GET /employees sends array of employees
@@ -38,5 +38,5 @@ app.route("/employees/:id").get((request, response) => {
     return response.status(404).send("there is no employee with that id");
   }
   const found = employees.find((employee) => employee.id === +id);
-  response.send(found.name);
+  response.send(found);
 });
